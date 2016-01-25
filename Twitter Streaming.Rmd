@@ -1,0 +1,19 @@
+---
+title: "Twitter Data Streaming"
+author: "Laura Uguccioni"
+date: "January 25, 2016"
+output: html_document
+---
+
+```{r}
+library(ROAuth)
+library(streamR)
+
+setwd("~/Documents/QMSS Term 2")
+load("my_oauth.Rdata")
+
+filterStream("tweets.json", track = c("Bernier Sanders", "Hilary Clinton"), timeout = 10, 
+  oauth = my_oauth)
+
+tweets.df <- parseTweets("tweets.json", simplify = TRUE)
+```

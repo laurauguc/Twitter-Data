@@ -6,13 +6,15 @@ output: html_document
 ---
 
 ```{r}
+# Resource for API set-up: http://pablobarbera.com/blog/archives/1.html
+
 library(ROAuth)
 library(streamR)
 
 setwd("~/Documents/QMSS Term 2")
 load("my_oauth.Rdata")
 
-filterStream("tweets.json", track = c("Bernier Sanders", "Hilary Clinton"), timeout = 10, 
+filterStream("tweets.json", track = c("Bernier Sanders", "Hilary Clinton"), timeout = 180, 
   oauth = my_oauth)
 
 tweets.df <- parseTweets("tweets.json", simplify = TRUE)
